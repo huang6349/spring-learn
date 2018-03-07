@@ -21,8 +21,8 @@ public class MyUser extends AbstractAuditingEntity {
     private static final long serialVersionUID = 1604498231177241460L;
 
     @Id
-    @GenericGenerator(name = "id", strategy = "uuid")
-    @GeneratedValue(generator = "id")
+    @GenericGenerator(name = "user", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(generator = "user")
     private String id;
 
     @NotNull
@@ -38,13 +38,13 @@ public class MyUser extends AbstractAuditingEntity {
     private String password;
 
     @JsonIgnore
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(
-            name = "TB_USER_AUTHORITY",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
+            name = "TB_USER_ROLE",
+            joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "ROLE_NAME", referencedColumnName = "name")})
     @BatchSize(size = 20)
-    private Set<Authority> authorities = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     public String getId() {
         return id;
@@ -70,12 +70,12 @@ public class MyUser extends AbstractAuditingEntity {
         this.password = password;
     }
 
-    public Set<Authority> getAuthorities() {
-        return authorities;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setAuthorities(Set<Authority> authorities) {
-        this.authorities = authorities;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override

@@ -13,8 +13,8 @@ public class Hello implements Serializable {
     private static final long serialVersionUID = 6075105932543389178L;
 
     @Id
-    @GenericGenerator(name = "id", strategy = "uuid")
-    @GeneratedValue(generator = "id")
+    @GenericGenerator(name = "hello", strategy = "org.hibernate.id.UUIDGenerator")
+    @GeneratedValue(generator = "hello")
     private String id;
 
     @Size(max = 188)

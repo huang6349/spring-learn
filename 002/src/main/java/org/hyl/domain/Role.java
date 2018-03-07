@@ -10,8 +10,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "TB_AUTHORITY")
-public class Authority extends AbstractAuditingEntity {
+@Table(name = "TB_ROLE")
+public class Role extends AbstractAuditingEntity {
 
     private static final long serialVersionUID = 7584372570299432038L;
 
@@ -38,9 +38,9 @@ public class Authority extends AbstractAuditingEntity {
             return false;
         }
 
-        Authority authority = (Authority) obj;
+        Role role = (Role) obj;
 
-        return !(name != null ? !name.equals(authority.name) : authority.name != null);
+        return !(name != null ? !name.equals(role.name) : role.name != null);
     }
 
     @Override
