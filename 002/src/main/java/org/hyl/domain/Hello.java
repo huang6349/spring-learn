@@ -1,5 +1,6 @@
 package org.hyl.domain;
 
+import com.sun.istack.internal.Nullable;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,12 +14,12 @@ public class Hello implements Serializable {
     private static final long serialVersionUID = 6075105932543389178L;
 
     @Id
-    @GenericGenerator(name = "hello", strategy = "org.hibernate.id.UUIDGenerator")
-    @GeneratedValue(generator = "hello")
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @Size(max = 188)
-    @Column(length = 188)
+    @Nullable
+    @Column(nullable = false)
     private String node;
 
     public String getId() {
