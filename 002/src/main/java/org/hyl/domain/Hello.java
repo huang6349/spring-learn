@@ -13,19 +13,16 @@ public class Hello implements Serializable {
     private static final long serialVersionUID = 6075105932543389178L;
 
     @Id
-    @GenericGenerator(name = "hello", strategy = "org.hibernate.id.UUIDGenerator")
-    @GeneratedValue(generator = "hello")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @Size(max = 188)
-    @Column(length = 188)
     private String node;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

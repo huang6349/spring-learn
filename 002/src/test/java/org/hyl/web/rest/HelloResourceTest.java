@@ -2,10 +2,10 @@ package org.hyl.web.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hyl.domain.Hello;
+import org.hyl.repository.HelloRepository;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,10 +15,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.context.WebApplicationContext;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,51 +28,82 @@ import org.springframework.web.context.WebApplicationContext;
 @WithMockUser(username = "user", password = "123456")
 public class HelloResourceTest {
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-
-    @Autowired
-    private WebApplicationContext context;
+    private static final String URI = "/api/hello";
+    private static final String DEFAULT_NODE = "AAAAAAAAAA";
+    private static final String UPDATED_NODE = "BBBBBBBBBB";
 
     @Autowired
     private MockMvc mockMvc;
 
     @Autowired
+    private HelloRepository helloRepository;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
+    private Hello hello;
+
+    @Before
+    public void setup() {
+        hello = new Hello();
+        hello.setNode(DEFAULT_NODE);
+    }
+
     @Test
+    @Transactional
     public void create() throws Exception {
-        Hello hello = new Hello();
-        hello.setNode("牛逼啊");
-        console(MockMvcRequestBuilders.post("/api/hello").contentType(MediaType.APPLICATION_JSON_UTF8).content(objectMapper.writeValueAsString(hello)));
+        String url = URI;
+        int size = helloRepository.findAll().size();
+        RequestBuilder builder = MockMvcRequestBuilders.post(url).contentType(MediaType.APPLICATION_JSON_UTF8).content(objectMapper.writeValueAsString(hello));
+        mockMvc.perform(builder).andExpect(status().isOk());
+        List<Hello> hellos = helloRepository.findAll();
+        assertThat(hellos).hasSize(size + 1);
+        Hello test = hellos.get(hellos.size() - 1);
+        assertThat(test.getNode()).isEqualTo(DEFAULT_NODE);
     }
 
     @Test
-    public void delete() throws Exception {
-        console(MockMvcRequestBuilders.delete("/api/hello/{id}", "402881ea61fb56180161fb56270b0000"));
-    }
-
-    @Test
+    @Transactional
     public void getAll() throws Exception {
-        MultiValueMap map = new LinkedMultiValueMap();
-        map.add("page", "0");
-        map.add("size", "10");
-        console(MockMvcRequestBuilders.get("/api/hello").params(map));
+        String url = URI + "?sort=id,desc";
+        RequestBuilder builder = MockMvcRequestBuilders.get(url);
+        mockMvc.perform(builder).andExpect(status().isOk());
     }
 
     @Test
+    @Transactional
     public void getById() throws Exception {
-        console(MockMvcRequestBuilders.get("/api/hello/{id}", "402881ea61fb56180161fb56270b0000"));
+        String url = URI + "/{id}";
+        helloRepository.saveAndFlush(hello);
+        RequestBuilder builder = MockMvcRequestBuilders.get(url, hello.getId());
+        mockMvc.perform(builder).andExpect(status().isOk());
     }
 
     @Test
+    @Transactional
     public void update() throws Exception {
-        Hello hello = new Hello();
-        hello.setId("402881ea61fb56180161fb56270b0000");
-        hello.setNode("牛逼啊！");
-        console(MockMvcRequestBuilders.put("/api/hello").contentType(MediaType.APPLICATION_JSON_UTF8).content(objectMapper.writeValueAsString(hello)));
+        String url = URI;
+        helloRepository.saveAndFlush(hello);
+        int size = helloRepository.findAll().size();
+        Hello update = helloRepository.findOne(hello.getId());
+        update.setNode(UPDATED_NODE);
+        RequestBuilder builder = MockMvcRequestBuilders.put(url).contentType(MediaType.APPLICATION_JSON_UTF8).content(objectMapper.writeValueAsString(update));
+        mockMvc.perform(builder).andExpect(status().isOk());
+        List<Hello> hellos = helloRepository.findAll();
+        assertThat(hellos).hasSize(size);
+        Hello test = hellos.get(hellos.size() - 1);
+        assertThat(test.getNode()).isEqualTo(UPDATED_NODE);
     }
 
-    private void console(RequestBuilder builder) throws Exception {
-        logger.info(mockMvc.perform(builder).andExpect(MockMvcResultMatchers.status().isOk()).andReturn().getResponse().getContentAsString());
+    @Test
+    @Transactional
+    public void delete() throws Exception {
+        String url = URI + "/{id}";
+        helloRepository.saveAndFlush(hello);
+        int size = helloRepository.findAll().size();
+        RequestBuilder builder = MockMvcRequestBuilders.delete(url, hello.getId());
+        mockMvc.perform(builder).andExpect(status().isOk());
+        List<Hello> hellos = helloRepository.findAll();
+        assertThat(hellos).hasSize(size - 1);
     }
 }

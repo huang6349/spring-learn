@@ -29,17 +29,9 @@ public class HelloResource {
     @ApiOperation("添加数据")
     @PostMapping("/hello")
     public ResultEntity create(@Valid @RequestBody Hello hello) {
-        logger.debug("添加数据", hello);
+        logger.debug("添加数据 {}", hello);
         Hello result = helloRepository.save(hello);
         return ResultUtil.success(Result.Type.POST, result);
-    }
-
-    @ApiOperation("删除数据")
-    @DeleteMapping("/hello/{id}")
-    public ResultEntity delete(@PathVariable String id) {
-        logger.debug("删除数据", id);
-        helloRepository.delete(id);
-        return ResultUtil.success(Result.Type.DELETE);
     }
 
     @ApiOperation("分页查询数据")
@@ -52,8 +44,8 @@ public class HelloResource {
 
     @ApiOperation("根据编号查询数据")
     @GetMapping("/hello/{id}")
-    public ResultEntity getById(@PathVariable String id) {
-        logger.debug("根据编号查询数据", id);
+    public ResultEntity getById(@PathVariable Long id) {
+        logger.debug("根据编号查询数据 {}", id);
         Hello hello = helloRepository.findOne(id);
         return ResultUtil.success(Result.Type.GET, hello);
     }
@@ -61,8 +53,16 @@ public class HelloResource {
     @ApiOperation("修改数据")
     @PutMapping("/hello")
     public ResultEntity update(@Valid @RequestBody Hello hello) {
-        logger.debug("修改数据", hello);
+        logger.debug("修改数据 {}", hello);
         Hello result = helloRepository.save(hello);
         return ResultUtil.success(Result.Type.PUT, result);
+    }
+
+    @ApiOperation("删除数据")
+    @DeleteMapping("/hello/{id}")
+    public ResultEntity delete(@PathVariable Long id) {
+        logger.debug("删除数据 {}", id);
+        helloRepository.delete(id);
+        return ResultUtil.success(Result.Type.DELETE);
     }
 }
