@@ -1,5 +1,6 @@
 package org.hyl.domain;
 
+import com.sun.istack.internal.Nullable;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
