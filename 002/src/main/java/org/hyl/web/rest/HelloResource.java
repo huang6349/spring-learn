@@ -21,7 +21,7 @@ import javax.validation.Valid;
 @RequestMapping("/api")
 public class HelloResource {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
+    private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private HelloRepository helloRepository;
