@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<MyUser, String> {
+public interface UserRepository extends JpaRepository<MyUser, Long> {
 
     String USERS_BY_USER_NAME_CACHE = "usersByUsername";
 
-    @EntityGraph(attributePaths = "roles")
+    @EntityGraph(attributePaths = "authorities")
     @Cacheable(cacheNames = USERS_BY_USER_NAME_CACHE)
-    Optional<MyUser> findOneWithRolesByUsername(String username);
+    Optional<MyUser> findOneWithAuthoritiesByUsername(String username);
 }

@@ -2,7 +2,6 @@ package org.hyl.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.GenericGenerator;
 import org.hyl.commons.domain.AbstractAuditingEntity;
 
 import javax.persistence.*;
@@ -17,9 +16,8 @@ public class Permissions extends AbstractAuditingEntity {
     private static final long serialVersionUID = 6746359187625456971L;
 
     @Id
-    @GenericGenerator(name = "permissions", strategy = "org.hibernate.id.UUIDGenerator")
-    @GeneratedValue(generator = "permissions")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @NotNull
     @Column(nullable = false)
@@ -28,17 +26,17 @@ public class Permissions extends AbstractAuditingEntity {
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "TB_PERMISSIONS_ROLE",
+            name = "TB_PERMISSIONS_AUTHORITY",
             joinColumns = {@JoinColumn(name = "PERMISSIONS_ID", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "ROLE_NAME", referencedColumnName = "name")})
+            inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_NAME", referencedColumnName = "name")})
     @BatchSize(size = 20)
-    private Set<Role> roles = new HashSet<>();
+    private Set<Authority> authorities = new HashSet<>();
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,11 +48,11 @@ public class Permissions extends AbstractAuditingEntity {
         this.name = name;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<Authority> getAuthorities() {
+        return authorities;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
     }
 }

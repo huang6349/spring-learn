@@ -2,7 +2,6 @@ package org.hyl.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.BatchSize;
-import org.hibernate.annotations.GenericGenerator;
 import org.hyl.commons.domain.AbstractAuditingEntity;
 import org.hyl.config.Constants;
 
@@ -21,9 +20,8 @@ public class MyUser extends AbstractAuditingEntity {
     private static final long serialVersionUID = 1604498231177241460L;
 
     @Id
-    @GenericGenerator(name = "user", strategy = "org.hibernate.id.UUIDGenerator")
-    @GeneratedValue(generator = "user")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @NotNull
     @Pattern(regexp = Constants.USER_NAME_REGEX)
@@ -40,17 +38,17 @@ public class MyUser extends AbstractAuditingEntity {
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "TB_USER_ROLE",
+            name = "TB_USER_AUTHORITY",
             joinColumns = {@JoinColumn(name = "USER_ID", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "ROLE_NAME", referencedColumnName = "name")})
+            inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_NAME", referencedColumnName = "name")})
     @BatchSize(size = 20)
-    private Set<Role> roles = new HashSet<>();
+    private Set<Authority> authorities = new HashSet<>();
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,12 +68,12 @@ public class MyUser extends AbstractAuditingEntity {
         this.password = password;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Set<Authority> getAuthorities() {
+        return authorities;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setAuthorities(Set<Authority> authorities) {
+        this.authorities = authorities;
     }
 
     @Override

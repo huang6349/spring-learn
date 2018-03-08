@@ -26,11 +26,11 @@ public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.debug("进行身份验证 {}", username);
-        Optional<MyUser> userFromDatabase = userRepository.findOneWithRolesByUsername(username);
+        Optional<MyUser> userFromDatabase = userRepository.findOneWithAuthoritiesByUsername(username);
         return userFromDatabase.map(user -> createSpringSecurityUser(username, user)).orElseThrow(() -> new UsernameNotFoundException("用户名" + username + "不存在"));
     }
 
     private User createSpringSecurityUser(String username, MyUser user) {
-        return new User(username, user.getPassword(), user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList()));
+        return new User(username, user.getPassword(), user.getAuthorities().stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList()));
     }
 }
