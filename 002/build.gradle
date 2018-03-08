@@ -89,6 +89,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-cache'
     compile 'org.hibernate:hibernate-envers'
     compile 'com.h2database:h2'
+    compile "org.zalando:problem-spring-web:0.22.2"
     compile('io.springfox:springfox-swagger2:2.8.0') {
         exclude module: 'mapstruct'
     }
