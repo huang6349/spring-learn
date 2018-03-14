@@ -37,7 +37,6 @@ buildscript {
         mavenLocal()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         maven { url 'http://repo2.maven.org/maven2' }
-        maven { url 'http://repo.spring.io/plugins-release' }
         jcenter()
         mavenCentral()
     }
@@ -78,19 +77,9 @@ subprojects {
         jcenter()
         mavenCentral()
     }
-    // 配置子项目的依赖管理
-    dependencyManagement {
-        imports {
-            mavenBom 'io.spring.platform:platform-bom:Brussels-SR7'
-        }
-    }
     // 配置子项目的依赖
     dependencies {
-        compile('org.springframework.boot:spring-boot-starter') {
-            exclude group: 'com.vaadin.external.google', module: 'android-json'
-        }
-        testCompile('org.springframework.boot:spring-boot-starter-test') {
-            exclude group: 'com.vaadin.external.google', module: 'android-json'
-        }
+        compile 'org.springframework.boot:spring-boot-starter'
+        testCompile 'org.springframework.boot:spring-boot-starter-test'
     }
 }
