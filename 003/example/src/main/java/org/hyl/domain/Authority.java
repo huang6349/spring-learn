@@ -19,11 +19,22 @@ public class Authority extends AbstractAuditingEntity {
     @Column(length = 50)
     private String name;
 
+    @Column(nullable = false)
+    private String describe;
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
     }
 }

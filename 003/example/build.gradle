@@ -3,6 +3,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-jdbc'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'com.h2database:h2'
+    compile 'org.zalando:problem-spring-web:0.22.2'
     compile project(':commons')
     compile project(':security')
 }
