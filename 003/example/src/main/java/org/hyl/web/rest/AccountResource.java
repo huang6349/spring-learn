@@ -1,5 +1,7 @@
 package org.hyl.web.rest;
 
+import org.hyl.commons.domain.ResultEntity;
+import org.hyl.commons.utils.ResultUtil;
 import org.hyl.domain.Permissions;
 import org.hyl.errors.InternalServerErrorException;
 import org.hyl.service.PermissionsService;
@@ -27,15 +29,16 @@ public class AccountResource {
     private PermissionsService permissionsService;
 
     @GetMapping("/account")
-    public UserDTO getAccount() {
+    public ResultEntity getAccount() {
         return userService.getUserWithAuthorities()
-                .map(UserDTO::new)
+                .map(user -> ResultUtil.success(new UserDTO(user)))
                 .orElseThrow(() -> new InternalServerErrorException("未找到用户信息"));
     }
 
     @GetMapping("/authorities")
-    public List<Permissions> getAuthorities() {
+    public ResultEntity getAuthorities() {
         return permissionsService.getUserPermissions()
+                .map(ResultUtil::success)
                 .orElseThrow(() -> new InternalServerErrorException("获取用户权限失败"));
     }
 }
