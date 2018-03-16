@@ -22,6 +22,12 @@ public class Authority extends AbstractAuditingEntity {
     @Column(nullable = false)
     private String describe;
 
+    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Integer seq;
+
+    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
+    private Integer state;
+
     public String getName() {
         return name;
     }
@@ -36,5 +42,21 @@ public class Authority extends AbstractAuditingEntity {
 
     public void setDescribe(String describe) {
         this.describe = describe;
+    }
+
+    public Integer getSeq() {
+        return seq;
+    }
+
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }
