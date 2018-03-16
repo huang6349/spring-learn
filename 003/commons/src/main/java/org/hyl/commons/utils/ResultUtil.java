@@ -89,6 +89,22 @@ public final class ResultUtil {
         return response(new ResultDTO(Result.Network.SUCCESS, type, state, message, data, params));
     }
 
+    public static ResultEntity success(Object data) {
+        return response(new ResultDTO(Result.Network.SUCCESS, Result.Type.DEFAULT, null, null, data, null));
+    }
+
+    public static ResultEntity success(Result.Type type, Object data) {
+        return response(new ResultDTO(Result.Network.SUCCESS, type, null, null, data, null));
+    }
+
+    public static ResultEntity success(Object data, Object params) {
+        return response(new ResultDTO(Result.Network.SUCCESS, Result.Type.DEFAULT, null, null, data, params));
+    }
+
+    public static ResultEntity success(Result.Type type, Object data, Object params) {
+        return response(new ResultDTO(Result.Network.SUCCESS, type, null, null, data, params));
+    }
+
     public static ResultEntity error(String e) {
         return response(new ResultDTO(Result.Network.ERROR, Result.Type.DEFAULT, null, null, null, e, null));
     }
@@ -167,6 +183,22 @@ public final class ResultUtil {
 
     public static ResultEntity error(Result.Type type, String e, Integer state, String message, Object data, Object params) {
         return response(new ResultDTO(Result.Network.ERROR, type, state, message, data, e, params));
+    }
+
+    public static ResultEntity error(String e, Object data) {
+        return response(new ResultDTO(Result.Network.ERROR, Result.Type.DEFAULT, null, null, data, e, null));
+    }
+
+    public static ResultEntity error(Result.Type type, String e, Object data) {
+        return response(new ResultDTO(Result.Network.ERROR, type, null, null, data, e, null));
+    }
+
+    public static ResultEntity error(String e, Object data, Object params) {
+        return response(new ResultDTO(Result.Network.ERROR, Result.Type.DEFAULT, null, null, data, e, params));
+    }
+
+    public static ResultEntity error(Result.Type type, String e, Object data, Object params) {
+        return response(new ResultDTO(Result.Network.ERROR, type, null, null, data, e, params));
     }
 
     private static ResultEntity response(ResultDTO resultDTO) {

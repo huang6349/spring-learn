@@ -656,6 +656,130 @@ public class ResultUtilTest {
     }
 
     @Test
+    public void success20() throws Exception {
+        ResultEntity a = ResultUtil.success(data);
+        ResultEntity b = new ResultEntity();
+        b.setState(Result.SUCCESS.getState());
+        b.setMessage(Result.SUCCESS.getMessage());
+        b.setData(data);
+        b.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b.setE(null);
+        b.setParams(null);
+        test(a, b);
+    }
+
+    @Test
+    public void success21() throws Exception {
+        ResultEntity a1 = ResultUtil.success(Result.Type.DEFAULT, data);
+        ResultEntity b1 = new ResultEntity();
+        b1.setState(Result.SUCCESS.getState());
+        b1.setMessage(Result.SUCCESS.getMessage());
+        b1.setData(data);
+        b1.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b1.setE(null);
+        b1.setParams(null);
+        test(a1, b1);
+        ResultEntity a2 = ResultUtil.success(Result.Type.POST, data);
+        ResultEntity b2 = new ResultEntity();
+        b2.setState(Result.SUCCESS_POST.getState());
+        b2.setMessage(Result.SUCCESS_POST.getMessage());
+        b2.setData(data);
+        b2.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b2.setE(null);
+        b2.setParams(null);
+        test(a2, b2);
+        ResultEntity a3 = ResultUtil.success(Result.Type.DELETE, data);
+        ResultEntity b3 = new ResultEntity();
+        b3.setState(Result.SUCCESS_DELETE.getState());
+        b3.setMessage(Result.SUCCESS_DELETE.getMessage());
+        b3.setData(data);
+        b3.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b3.setE(null);
+        b3.setParams(null);
+        test(a3, b3);
+        ResultEntity a4 = ResultUtil.success(Result.Type.GET, data);
+        ResultEntity b4 = new ResultEntity();
+        b4.setState(Result.SUCCESS_GET.getState());
+        b4.setMessage(Result.SUCCESS_GET.getMessage());
+        b4.setData(data);
+        b4.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b4.setE(null);
+        b4.setParams(null);
+        test(a4, b4);
+        ResultEntity a5 = ResultUtil.success(Result.Type.PUT, data);
+        ResultEntity b5 = new ResultEntity();
+        b5.setState(Result.SUCCESS_PUT.getState());
+        b5.setMessage(Result.SUCCESS_PUT.getMessage());
+        b5.setData(data);
+        b5.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b5.setE(null);
+        b5.setParams(null);
+        test(a5, b5);
+    }
+
+    @Test
+    public void success22() throws Exception {
+        ResultEntity a = ResultUtil.success(data, map);
+        ResultEntity b = new ResultEntity();
+        b.setState(Result.SUCCESS.getState());
+        b.setMessage(Result.SUCCESS.getMessage());
+        b.setData(data);
+        b.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b.setE(null);
+        b.setParams(map);
+        test(a, b);
+    }
+
+    @Test
+    public void success23() throws Exception {
+        ResultEntity a1 = ResultUtil.success(Result.Type.DEFAULT, data, map);
+        ResultEntity b1 = new ResultEntity();
+        b1.setState(Result.SUCCESS.getState());
+        b1.setMessage(Result.SUCCESS.getMessage());
+        b1.setData(data);
+        b1.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b1.setE(null);
+        b1.setParams(map);
+        test(a1, b1);
+        ResultEntity a2 = ResultUtil.success(Result.Type.POST, data, map);
+        ResultEntity b2 = new ResultEntity();
+        b2.setState(Result.SUCCESS_POST.getState());
+        b2.setMessage(Result.SUCCESS_POST.getMessage());
+        b2.setData(data);
+        b2.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b2.setE(null);
+        b2.setParams(map);
+        test(a2, b2);
+        ResultEntity a3 = ResultUtil.success(Result.Type.DELETE, data, map);
+        ResultEntity b3 = new ResultEntity();
+        b3.setState(Result.SUCCESS_DELETE.getState());
+        b3.setMessage(Result.SUCCESS_DELETE.getMessage());
+        b3.setData(data);
+        b3.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b3.setE(null);
+        b3.setParams(map);
+        test(a3, b3);
+        ResultEntity a4 = ResultUtil.success(Result.Type.GET, data, map);
+        ResultEntity b4 = new ResultEntity();
+        b4.setState(Result.SUCCESS_GET.getState());
+        b4.setMessage(Result.SUCCESS_GET.getMessage());
+        b4.setData(data);
+        b4.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b4.setE(null);
+        b4.setParams(map);
+        test(a4, b4);
+        ResultEntity a5 = ResultUtil.success(Result.Type.PUT, data, map);
+        ResultEntity b5 = new ResultEntity();
+        b5.setState(Result.SUCCESS_PUT.getState());
+        b5.setMessage(Result.SUCCESS_PUT.getMessage());
+        b5.setData(data);
+        b5.setSuccess(Result.Network.SUCCESS.isSuccess());
+        b5.setE(null);
+        b5.setParams(map);
+        test(a5, b5);
+    }
+
+    @Test
     public void error0() throws Exception {
         ResultEntity a = ResultUtil.error(error);
         ResultEntity b = new ResultEntity();
@@ -1268,6 +1392,130 @@ public class ResultUtilTest {
         ResultEntity b5 = new ResultEntity();
         b5.setState(state);
         b5.setMessage(message);
+        b5.setData(data);
+        b5.setSuccess(Result.Network.ERROR.isSuccess());
+        b5.setE(error);
+        b5.setParams(map);
+        test(a5, b5);
+    }
+
+    @Test
+    public void error20() throws Exception {
+        ResultEntity a = ResultUtil.error(error, data);
+        ResultEntity b = new ResultEntity();
+        b.setState(Result.ERROR.getState());
+        b.setMessage(Result.ERROR.getMessage());
+        b.setData(data);
+        b.setSuccess(Result.Network.ERROR.isSuccess());
+        b.setE(error);
+        b.setParams(null);
+        test(a, b);
+    }
+
+    @Test
+    public void error21() throws Exception {
+        ResultEntity a1 = ResultUtil.error(Result.Type.DEFAULT, error, data);
+        ResultEntity b1 = new ResultEntity();
+        b1.setState(Result.ERROR.getState());
+        b1.setMessage(Result.ERROR.getMessage());
+        b1.setData(data);
+        b1.setSuccess(Result.Network.ERROR.isSuccess());
+        b1.setE(error);
+        b1.setParams(null);
+        test(a1, b1);
+        ResultEntity a2 = ResultUtil.error(Result.Type.POST, error, data);
+        ResultEntity b2 = new ResultEntity();
+        b2.setState(Result.ERROR_POST.getState());
+        b2.setMessage(Result.ERROR_POST.getMessage());
+        b2.setData(data);
+        b2.setSuccess(Result.Network.ERROR.isSuccess());
+        b2.setE(error);
+        b2.setParams(null);
+        test(a2, b2);
+        ResultEntity a3 = ResultUtil.error(Result.Type.DELETE, error, data);
+        ResultEntity b3 = new ResultEntity();
+        b3.setState(Result.ERROR_DELETE.getState());
+        b3.setMessage(Result.ERROR_DELETE.getMessage());
+        b3.setData(data);
+        b3.setSuccess(Result.Network.ERROR.isSuccess());
+        b3.setE(error);
+        b3.setParams(null);
+        test(a3, b3);
+        ResultEntity a4 = ResultUtil.error(Result.Type.GET, error, data);
+        ResultEntity b4 = new ResultEntity();
+        b4.setState(Result.ERROR_GET.getState());
+        b4.setMessage(Result.ERROR_GET.getMessage());
+        b4.setData(data);
+        b4.setSuccess(Result.Network.ERROR.isSuccess());
+        b4.setE(error);
+        b4.setParams(null);
+        test(a4, b4);
+        ResultEntity a5 = ResultUtil.error(Result.Type.PUT, error, data);
+        ResultEntity b5 = new ResultEntity();
+        b5.setState(Result.ERROR_PUT.getState());
+        b5.setMessage(Result.ERROR_PUT.getMessage());
+        b5.setData(data);
+        b5.setSuccess(Result.Network.ERROR.isSuccess());
+        b5.setE(error);
+        b5.setParams(null);
+        test(a5, b5);
+    }
+
+    @Test
+    public void error22() throws Exception {
+        ResultEntity a = ResultUtil.error(error, data, map);
+        ResultEntity b = new ResultEntity();
+        b.setState(Result.ERROR.getState());
+        b.setMessage(Result.ERROR.getMessage());
+        b.setData(data);
+        b.setSuccess(Result.Network.ERROR.isSuccess());
+        b.setE(error);
+        b.setParams(map);
+        test(a, b);
+    }
+
+    @Test
+    public void error23() throws Exception {
+        ResultEntity a1 = ResultUtil.error(Result.Type.DEFAULT, error, data, map);
+        ResultEntity b1 = new ResultEntity();
+        b1.setState(Result.ERROR.getState());
+        b1.setMessage(Result.ERROR.getMessage());
+        b1.setData(data);
+        b1.setSuccess(Result.Network.ERROR.isSuccess());
+        b1.setE(error);
+        b1.setParams(map);
+        test(a1, b1);
+        ResultEntity a2 = ResultUtil.error(Result.Type.POST, error, data, map);
+        ResultEntity b2 = new ResultEntity();
+        b2.setState(Result.ERROR_POST.getState());
+        b2.setMessage(Result.ERROR_POST.getMessage());
+        b2.setData(data);
+        b2.setSuccess(Result.Network.ERROR.isSuccess());
+        b2.setE(error);
+        b2.setParams(map);
+        test(a2, b2);
+        ResultEntity a3 = ResultUtil.error(Result.Type.DELETE, error, data, map);
+        ResultEntity b3 = new ResultEntity();
+        b3.setState(Result.ERROR_DELETE.getState());
+        b3.setMessage(Result.ERROR_DELETE.getMessage());
+        b3.setData(data);
+        b3.setSuccess(Result.Network.ERROR.isSuccess());
+        b3.setE(error);
+        b3.setParams(map);
+        test(a3, b3);
+        ResultEntity a4 = ResultUtil.error(Result.Type.GET, error, data, map);
+        ResultEntity b4 = new ResultEntity();
+        b4.setState(Result.ERROR_GET.getState());
+        b4.setMessage(Result.ERROR_GET.getMessage());
+        b4.setData(data);
+        b4.setSuccess(Result.Network.ERROR.isSuccess());
+        b4.setE(error);
+        b4.setParams(map);
+        test(a4, b4);
+        ResultEntity a5 = ResultUtil.error(Result.Type.PUT, error, data, map);
+        ResultEntity b5 = new ResultEntity();
+        b5.setState(Result.ERROR_PUT.getState());
+        b5.setMessage(Result.ERROR_PUT.getMessage());
         b5.setData(data);
         b5.setSuccess(Result.Network.ERROR.isSuccess());
         b5.setE(error);
