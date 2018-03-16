@@ -32,7 +32,7 @@ public class ResultUtilTest {
         data.add("2");
         data.add("3");
         map.put("id", 1);
-        error = new NullPointerException().getMessage();
+        error = new RuntimeException("ERROR").getMessage();
     }
 
     @Test
