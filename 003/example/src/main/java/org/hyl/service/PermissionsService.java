@@ -1,7 +1,6 @@
 package org.hyl.service;
 
 import org.hyl.domain.Permissions;
-import org.hyl.errors.InternalServerErrorException;
 import org.hyl.repository.PermissionsRepository;
 import org.hyl.repository.UserRepository;
 import org.hyl.security.SecurityUtils;

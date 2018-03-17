@@ -16,7 +16,7 @@ public class UserDTO {
     @Size(min = 1, max = 50)
     private String username;
 
-    private Set<String> authorities;
+    private Set<String> roles;
 
     public UserDTO() {
     }
@@ -24,7 +24,7 @@ public class UserDTO {
     public UserDTO(MyUser user) {
         this.id = user.getId();
         this.username = user.getUsername();
-        this.authorities = user.getAuthorities().stream().map(Authority::getName).collect(Collectors.toSet());
+        this.roles = user.getAuthorities().stream().map(Authority::getDescribe).collect(Collectors.toSet());
     }
 
     public Long getId() {
@@ -43,11 +43,11 @@ public class UserDTO {
         this.username = username;
     }
 
-    public Set<String> getAuthorities() {
-        return authorities;
+    public Set<String> getRoles() {
+        return roles;
     }
 
-    public void setAuthorities(Set<String> authorities) {
-        this.authorities = authorities;
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
     }
 }
