@@ -20,13 +20,16 @@ public class Authority extends AbstractAuditingEntity {
     private String name;
 
     @Column(nullable = false)
+    private String ident;
+
+    @Column(nullable = false)
     private String describe;
 
-    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
-    private Integer seq;
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private Integer seq = 0;
 
-    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
-    private Integer state;
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private Integer state = 0;
 
     public String getName() {
         return name;
@@ -34,6 +37,14 @@ public class Authority extends AbstractAuditingEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getIdent() {
+        return ident;
+    }
+
+    public void setIdent(String ident) {
+        this.ident = ident;
     }
 
     public String getDescribe() {

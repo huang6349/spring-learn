@@ -22,8 +22,8 @@ public class Permissions extends AbstractAuditingEntity {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, columnDefinition = "INT DEFAULT 0")
-    private Integer seq;
+    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
+    private Integer seq = 0;
 
     @JsonIgnore
     @ManyToMany

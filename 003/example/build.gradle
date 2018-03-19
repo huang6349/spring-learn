@@ -5,4 +5,5 @@ dependencies {
     compile 'com.h2database:h2'
     compile project(':commons')
     compile project(':security')
+    testCompile 'org.springframework.security:spring-security-test'
 }

@@ -6,8 +6,6 @@ public class InternalServerErrorException extends RuntimeException {
 
     private static final long serialVersionUID = 3729783508569808871L;
 
-    public static final String MESSAGE = InternalServerErrorException.class.getSimpleName();
-
     private Result.Type type = Result.Type.DEFAULT;
 
     private Integer state;

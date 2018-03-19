@@ -1,6 +1,7 @@
 package org.hyl.errors;
 
 import org.hyl.commons.domain.ResultEntity;
+import org.hyl.commons.errors.DataAlreadyIDException;
 import org.hyl.commons.errors.InternalServerErrorException;
 import org.hyl.commons.utils.ResultUtil;
 import org.slf4j.Logger;
@@ -23,7 +24,7 @@ public class ExceptionHandling {
         logger.error("[{}]发生错误：{}", request.getRequestURI(), e.getMessage());
         if (e instanceof InternalServerErrorException) {
             InternalServerErrorException ex = (InternalServerErrorException) e;
-            return ResultUtil.error(ex.getType(), InternalServerErrorException.MESSAGE, ex.getState(), e.getMessage(), ex.getData(), ex.getParams());
+            return ResultUtil.error(ex.getType(), ex.getClass().getSimpleName(), ex.getState(), e.getMessage(), ex.getData(), ex.getParams());
         }
         return ResultUtil.error(e.getMessage());
     }
