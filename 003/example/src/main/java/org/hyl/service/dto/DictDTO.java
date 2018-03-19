@@ -1,39 +1,42 @@
-package org.hyl.domain;
+package org.hyl.service.dto;
 
-import javax.persistence.*;
+import org.hyl.domain.Dict;
+
 import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "TB_DICT")
-public class Dict extends AbstractAuditingEntity {
+public class DictDTO {
 
-    private static final long serialVersionUID = 5710585163341980109L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false, columnDefinition = "BIGINT DEFAULT 0")
-    private Long pid;
+    private Long pid = 0L;
 
-    @Column(nullable = false)
-    private String level;
-
-    @Column(nullable = false, unique = true)
+    @NotNull(message = "字典标识不能为空")
     private String ident;
 
-    @Column(nullable = false)
+    @NotNull(message = "字典数据不能为空")
     private String data;
 
     private String code;
 
     private String describe;
 
-    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
-    private Integer seq;
+    private Integer seq = 0;
 
-    @Column(nullable = false, columnDefinition = "TINYINT DEFAULT 0")
-    private Byte state;
+    private Byte state = 0;
+
+    public DictDTO() {
+    }
+
+    public DictDTO(Dict dict) {
+        this.id = dict.getId();
+        this.pid = dict.getPid();
+        this.ident = dict.getIdent();
+        this.data = dict.getData();
+        this.code = dict.getCode();
+        this.describe = dict.getDescribe();
+        this.seq = dict.getSeq();
+        this.state = dict.getState();
+    }
 
     public Long getId() {
         return id;
@@ -49,14 +52,6 @@ public class Dict extends AbstractAuditingEntity {
 
     public void setPid(Long pid) {
         this.pid = pid;
-    }
-
-    public String getLevel() {
-        return level;
-    }
-
-    public void setLevel(String level) {
-        this.level = level;
     }
 
     public String getIdent() {

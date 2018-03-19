@@ -8,6 +8,7 @@ import org.hyl.commons.utils.ResultUtil;
 import org.hyl.domain.Dict;
 import org.hyl.repository.DictRepository;
 import org.hyl.service.DictService;
+import org.hyl.service.dto.DictDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,12 @@ public class DictResource {
 
     @PostMapping("/admin/dict")
     @Secured("ADMIN")
-    public ResultEntity create(@Valid @RequestBody Dict dict) {
-        logger.debug("新增数据字典：{}", dict);
-        if (dict.getId() != null) {
+    public ResultEntity create(@Valid @RequestBody DictDTO dto) {
+        logger.debug("新增数据字典：{}", dto);
+        if (dto.getId() != null) {
             throw new DataAlreadyIDException();
         }
-        return ResultUtil.success(Result.Type.POST, dictService.save(dict));
+        return ResultUtil.success(Result.Type.POST, dictService.save(dto));
     }
 
     @GetMapping("/api/dict")

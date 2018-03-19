@@ -6,11 +6,11 @@ import org.springframework.beans.BeanUtils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DictTreeDTO extends Dict {
+public class DictTreeDTO extends DictDTO {
 
     private static final long serialVersionUID = -3145470272605554440L;
 
-    private List<Dict> dicts = new ArrayList<>();
+    private List<DictDTO> dicts = new ArrayList<>();
 
     public static DictTreeDTO adapt(Dict dict) {
         DictTreeDTO dto = new DictTreeDTO();
@@ -18,11 +18,11 @@ public class DictTreeDTO extends Dict {
         return dto;
     }
 
-    public List<Dict> getDicts() {
+    public List<DictDTO> getDicts() {
         return dicts;
     }
 
-    public void setDicts(List<Dict> dicts) {
+    public void setDicts(List<DictDTO> dicts) {
         this.dicts = dicts;
     }
 }
