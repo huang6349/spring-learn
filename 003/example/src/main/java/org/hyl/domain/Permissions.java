@@ -10,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "TB_PERMISSIONS")
-public class Permissions extends AbstractAuditingEntity {
+public class Permissions extends AbstractLevelAuditingEntity {
 
     private static final long serialVersionUID = 6746359187625456971L;
 
@@ -21,9 +21,6 @@ public class Permissions extends AbstractAuditingEntity {
     @NotNull
     @Column(nullable = false)
     private String name;
-
-    @Column(nullable = false, columnDefinition = "INTEGER DEFAULT 0")
-    private Integer seq = 0;
 
     @JsonIgnore
     @ManyToMany
@@ -50,19 +47,20 @@ public class Permissions extends AbstractAuditingEntity {
         this.name = name;
     }
 
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
-    }
-
     public Set<Authority> getAuthorities() {
         return authorities;
     }
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    @Override
+    public String toString() {
+        return "Permissions{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", authorities=" + authorities +
+                '}';
     }
 }

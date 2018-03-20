@@ -70,4 +70,15 @@ public class Authority extends AbstractAuditingEntity {
     public void setState(Integer state) {
         this.state = state;
     }
+
+    @Override
+    public String toString() {
+        return "Authority{" +
+                "name='" + name + '\'' +
+                ", ident='" + ident + '\'' +
+                ", describe='" + describe + '\'' +
+                ", seq=" + seq +
+                ", state=" + state +
+                '}';
+    }
 }
