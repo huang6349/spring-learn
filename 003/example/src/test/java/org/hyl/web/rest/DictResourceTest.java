@@ -98,7 +98,7 @@ public class DictResourceTest {
         String url = URI1;
         Dict dict = new Dict();
         BeanUtils.copyProperties(dto, dict);
-        dict.setLevel(LevelUtil.calculateLevel(getLevel(dto.getPid()), dto.getPid()));
+        dict.setLevel(LevelUtil.calculateLevel(getLevel(dict.getPid()), dict.getPid()));
         dictRepository.saveAndFlush(dict);
         int size = dictRepository.findAll().size();
         RequestBuilder builder = MockMvcRequestBuilders.post(url).contentType(MediaType.APPLICATION_JSON_UTF8).content(objectMapper.writeValueAsString(dto));

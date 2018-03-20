@@ -44,7 +44,7 @@ public class DictResource {
     }
 
     @GetMapping("/api/dict")
-    public ResultEntity query(@Valid Pageable pageable) {
+    public ResultEntity query(Pageable pageable) {
         final Page<Dict> page = dictRepository.findAll(pageable);
         return ResultUtil.success(page.getContent());
     }
