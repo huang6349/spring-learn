@@ -6,9 +6,21 @@ import java.util.List;
 
 public class LevelDTO {
 
+    private Long id;
+
     private String level;
 
-    private List<LevelDTO> dicts = Lists.newArrayList();
+    private Integer seq;
+
+    private List<LevelDTO> child = Lists.newArrayList();
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getLevel() {
         return level;
@@ -18,11 +30,19 @@ public class LevelDTO {
         this.level = level;
     }
 
-    public List<LevelDTO> getDicts() {
-        return dicts;
+    public Integer getSeq() {
+        return seq;
     }
 
-    public void setDicts(List<LevelDTO> dicts) {
-        this.dicts = dicts;
+    public void setSeq(Integer seq) {
+        this.seq = seq;
+    }
+
+    public List<LevelDTO> getChild() {
+        return child;
+    }
+
+    public void setChild(List<LevelDTO> child) {
+        this.child = child;
     }
 }
