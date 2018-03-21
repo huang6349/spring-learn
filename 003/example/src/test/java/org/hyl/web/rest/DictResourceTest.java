@@ -1,10 +1,10 @@
 package org.hyl.web.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hyl.utils.LevelUtil;
 import org.hyl.domain.Dict;
 import org.hyl.repository.DictRepository;
 import org.hyl.service.dto.DictDTO;
+import org.hyl.utils.LevelUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
