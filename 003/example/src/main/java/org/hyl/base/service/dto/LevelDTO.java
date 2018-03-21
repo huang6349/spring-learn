@@ -1,7 +1,8 @@
-package org.hyl.service.dto;
+package org.hyl.base.service.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.collect.Lists;
+import org.hyl.base.service.dto.IdDTO;
 
 import java.util.List;
 

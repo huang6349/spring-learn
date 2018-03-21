@@ -1,5 +1,6 @@
 package org.hyl.service.dto;
 
+import org.hyl.base.service.dto.IdDTO;
 import org.hyl.domain.Dict;
 import org.springframework.beans.BeanUtils;
 

@@ -1,4 +1,4 @@
-package org.hyl.service.dto;
+package org.hyl.base.service.dto;
 
 public class IdDTO {
 

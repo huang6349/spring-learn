@@ -1,4 +1,4 @@
-package org.hyl.domain;
+package org.hyl.base.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.CreatedBy;

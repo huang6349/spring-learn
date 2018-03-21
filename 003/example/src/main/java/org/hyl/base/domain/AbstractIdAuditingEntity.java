@@ -1,4 +1,6 @@
-package org.hyl.domain;
+package org.hyl.base.domain;
+
+import org.hyl.base.domain.AbstractAuditingEntity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

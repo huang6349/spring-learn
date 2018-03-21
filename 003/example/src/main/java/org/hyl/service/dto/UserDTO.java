@@ -1,6 +1,7 @@
 package org.hyl.service.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hyl.base.service.dto.IdDTO;
 import org.hyl.domain.Authority;
 import org.hyl.domain.MyUser;
 import org.springframework.beans.BeanUtils;

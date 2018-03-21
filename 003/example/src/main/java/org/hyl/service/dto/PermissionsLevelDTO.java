@@ -1,5 +1,6 @@
 package org.hyl.service.dto;
 
+import org.hyl.base.service.dto.LevelDTO;
 import org.hyl.domain.Permissions;
 import org.springframework.beans.BeanUtils;
 

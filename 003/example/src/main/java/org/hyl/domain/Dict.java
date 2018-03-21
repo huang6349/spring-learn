@@ -1,5 +1,7 @@
 package org.hyl.domain;
 
+import org.hyl.base.domain.AbstractLevelAuditingEntity;
+
 import javax.persistence.*;
 
 @Entity

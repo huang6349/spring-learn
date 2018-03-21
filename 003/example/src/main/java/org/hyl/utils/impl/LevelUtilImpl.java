@@ -5,7 +5,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import org.apache.commons.collections.CollectionUtils;
 import org.hyl.utils.LevelUtil;
-import org.hyl.service.dto.LevelDTO;
+import org.hyl.base.service.dto.LevelDTO;
 
 import java.util.Comparator;
 import java.util.List;

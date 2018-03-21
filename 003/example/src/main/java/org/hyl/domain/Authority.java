@@ -1,5 +1,7 @@
 package org.hyl.domain;
 
+import org.hyl.base.domain.AbstractAuditingEntity;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;

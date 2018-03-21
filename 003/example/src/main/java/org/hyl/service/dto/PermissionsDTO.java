@@ -1,5 +1,7 @@
 package org.hyl.service.dto;
 
+import org.hyl.base.service.dto.IdDTO;
+
 import javax.validation.constraints.NotNull;
 
 public class PermissionsDTO extends IdDTO {
