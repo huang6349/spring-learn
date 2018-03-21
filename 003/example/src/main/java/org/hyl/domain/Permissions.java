@@ -14,10 +14,6 @@ public class Permissions extends AbstractLevelAuditingEntity {
 
     private static final long serialVersionUID = 6746359187625456971L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     @NotNull
     @Column(nullable = false)
     private String name;
@@ -30,14 +26,6 @@ public class Permissions extends AbstractLevelAuditingEntity {
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_NAME", referencedColumnName = "name")})
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -58,8 +46,7 @@ public class Permissions extends AbstractLevelAuditingEntity {
     @Override
     public String toString() {
         return "Permissions{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", authorities=" + authorities +
                 '}';
     }

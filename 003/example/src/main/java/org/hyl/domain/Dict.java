@@ -1,17 +1,12 @@
 package org.hyl.domain;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "TB_DICT")
 public class Dict extends AbstractLevelAuditingEntity {
 
     private static final long serialVersionUID = 5710585163341980109L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
     @Column(nullable = false, unique = true)
     private String ident;
@@ -25,14 +20,6 @@ public class Dict extends AbstractLevelAuditingEntity {
 
     @Column(nullable = false, columnDefinition = "TINYINT DEFAULT 0")
     private Byte state;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getIdent() {
         return ident;
@@ -77,8 +64,7 @@ public class Dict extends AbstractLevelAuditingEntity {
     @Override
     public String toString() {
         return "Dict{" +
-                "id=" + id +
-                ", ident='" + ident + '\'' +
+                "ident='" + ident + '\'' +
                 ", data='" + data + '\'' +
                 ", code='" + code + '\'' +
                 ", describe='" + describe + '\'' +

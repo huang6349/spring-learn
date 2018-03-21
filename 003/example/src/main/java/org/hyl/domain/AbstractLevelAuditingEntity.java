@@ -1,10 +1,9 @@
 package org.hyl.domain;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 @MappedSuperclass
-public abstract class AbstractLevelAuditingEntity extends AbstractAuditingEntity {
+public abstract class AbstractLevelAuditingEntity extends AbstractIdAuditingEntity {
 
     private static final long serialVersionUID = -1290268469143633319L;
 

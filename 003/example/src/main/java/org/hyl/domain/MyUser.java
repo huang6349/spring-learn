@@ -11,13 +11,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "TB_USER")
-public class MyUser extends AbstractAuditingEntity {
+public class MyUser extends AbstractIdAuditingEntity {
 
     private static final long serialVersionUID = -5873184873496716826L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
     @NotNull
     @Size(min = 1, max = 50)
@@ -38,14 +34,6 @@ public class MyUser extends AbstractAuditingEntity {
             inverseJoinColumns = {@JoinColumn(name = "AUTHORITY_NAME", referencedColumnName = "name")})
     @BatchSize(size = 20)
     private Set<Authority> authorities = new HashSet<>();
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getUsername() {
         return username;
@@ -74,8 +62,7 @@ public class MyUser extends AbstractAuditingEntity {
     @Override
     public String toString() {
         return "MyUser{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", authorities=" + authorities +
                 '}';
