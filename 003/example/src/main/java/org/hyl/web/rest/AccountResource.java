@@ -28,7 +28,7 @@ public class AccountResource {
     @GetMapping("/account")
     public ResultEntity getAccount() {
         return userService.getUserWithAuthorities()
-                .map(user -> ResultUtil.success(new UserDTO(user)))
+                .map(ResultUtil::success)
                 .orElseThrow(() -> new InternalServerErrorException("获取当前用户信息失败，请稍后再试", 404));
     }
 

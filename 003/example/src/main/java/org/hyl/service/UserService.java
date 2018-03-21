@@ -5,6 +5,7 @@ import org.hyl.domain.Permissions;
 import org.hyl.repository.PermissionsRepository;
 import org.hyl.repository.UserRepository;
 import org.hyl.security.SecurityUtils;
+import org.hyl.service.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,9 @@ public class UserService {
     private UserRepository userRepository;
 
     @Transactional(readOnly = true)
-    public Optional<MyUser> getUserWithAuthorities() {
-        return SecurityUtils.getCurrentUserUsername().flatMap(userRepository::findOneWithAuthoritiesByUsername);
+    public Optional<UserDTO> getUserWithAuthorities() {
+        return SecurityUtils.getCurrentUserUsername()
+                .flatMap(userRepository::findOneWithAuthoritiesByUsername)
+                .map(UserDTO::adapt);
     }
 }
