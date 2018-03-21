@@ -15,16 +15,6 @@ public class PermissionsDTO {
 
     private Integer seq = 0;
 
-    public PermissionsDTO() {
-    }
-
-    public PermissionsDTO(Permissions permissions) {
-        this.id = permissions.getId();
-        this.pid = permissions.getPid();
-        this.name = permissions.getName();
-        this.seq = permissions.getSeq();
-    }
-
     public Long getId() {
         return id;
     }
