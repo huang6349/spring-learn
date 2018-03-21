@@ -26,11 +26,15 @@ public class DictResource {
 
     private final Logger logger = LoggerFactory.getLogger(DictResource.class);
 
-    @Autowired
-    private DictRepository dictRepository;
+    private final DictRepository dictRepository;
+
+    private final DictService dictService;
 
     @Autowired
-    private DictService dictService;
+    public DictResource(DictRepository dictRepository, DictService dictService) {
+        this.dictRepository = dictRepository;
+        this.dictService = dictService;
+    }
 
     @PostMapping("/admin/dict")
     @Secured("ADMIN")

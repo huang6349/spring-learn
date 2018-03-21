@@ -18,11 +18,15 @@ public class AccountResource {
 
     private final Logger logger = LoggerFactory.getLogger(AccountResource.class);
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
+
+    private final PermissionsService permissionsService;
 
     @Autowired
-    private PermissionsService permissionsService;
+    public AccountResource(UserService userService, PermissionsService permissionsService) {
+        this.userService = userService;
+        this.permissionsService = permissionsService;
+    }
 
     @GetMapping("/account")
     public ResultEntity getAccount() {

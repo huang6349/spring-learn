@@ -20,8 +20,12 @@ public class DictService {
 
     private final Logger logger = LoggerFactory.getLogger(DictService.class);
 
+    private final DictRepository dictRepository;
+
     @Autowired
-    private DictRepository dictRepository;
+    public DictService(DictRepository dictRepository) {
+        this.dictRepository = dictRepository;
+    }
 
     public DictDTO save(DictDTO dto) {
         logger.debug("保存数据：{}", dto);
