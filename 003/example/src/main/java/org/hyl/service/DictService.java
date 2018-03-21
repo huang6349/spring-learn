@@ -31,7 +31,7 @@ public class DictService {
         Dict dict = new Dict();
         BeanUtils.copyProperties(dto, dict);
         dict.setLevel(LevelUtil.calculateLevel(getLevel(dict.getPid()), dict.getPid()));
-        return new DictDTO(dictRepository.save(dict));
+        return DictDTO.adapt(dictRepository.save(dict));
     }
 
     private String getLevel(Long id) {

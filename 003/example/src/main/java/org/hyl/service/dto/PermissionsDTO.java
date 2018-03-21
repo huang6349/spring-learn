@@ -1,27 +1,13 @@
 package org.hyl.service.dto;
 
-import org.hyl.domain.Permissions;
-
 import javax.validation.constraints.NotNull;
 
-public class PermissionsDTO {
-
-    private Long id;
+public class PermissionsDTO extends IdDTO {
 
     private Long pid = 0L;
 
     @NotNull(message = "权限名称不能为空")
     private String name;
-
-    private Integer seq = 0;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Long getPid() {
         return pid;
@@ -37,13 +23,5 @@ public class PermissionsDTO {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getSeq() {
-        return seq;
-    }
-
-    public void setSeq(Integer seq) {
-        this.seq = seq;
     }
 }

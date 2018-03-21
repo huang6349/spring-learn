@@ -1,12 +1,11 @@
 package org.hyl.service.dto;
 
 import org.hyl.domain.Dict;
+import org.springframework.beans.BeanUtils;
 
 import javax.validation.constraints.NotNull;
 
-public class DictDTO {
-
-    private Long id;
+public class DictDTO extends IdDTO {
 
     private Long pid = 0L;
 
@@ -24,26 +23,10 @@ public class DictDTO {
 
     private Byte state = 0;
 
-    public DictDTO() {
-    }
-
-    public DictDTO(Dict dict) {
-        this.id = dict.getId();
-        this.pid = dict.getPid();
-        this.ident = dict.getIdent();
-        this.data = dict.getData();
-        this.code = dict.getCode();
-        this.describe = dict.getDescribe();
-        this.seq = dict.getSeq();
-        this.state = dict.getState();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public static DictDTO adapt(Dict dict) {
+        DictDTO dto = new DictDTO();
+        BeanUtils.copyProperties(dict, dto);
+        return dto;
     }
 
     public Long getPid() {

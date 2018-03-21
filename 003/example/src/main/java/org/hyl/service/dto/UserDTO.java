@@ -1,38 +1,24 @@
 package org.hyl.service.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hyl.domain.Authority;
 import org.hyl.domain.MyUser;
+import org.springframework.beans.BeanUtils;
 
 import javax.validation.constraints.Size;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class UserDTO {
+public class UserDTO extends IdDTO {
 
-    private Long id;
-
-    @NotBlank
-    @Size(min = 1, max = 50)
+    @NotBlank(message = "用户名不能为空")
+    @Size(min = 6, max = 32, message = "用户名的长度只能在6至32个字符之间")
     private String username;
 
     private Set<String> roles;
 
-    public UserDTO() {
-    }
-
-    public UserDTO(MyUser user) {
-        this.id = user.getId();
-        this.username = user.getUsername();
-        this.roles = user.getAuthorities().stream().map(Authority::getDescribe).collect(Collectors.toSet());
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public static UserDTO adapt(MyUser user) {
+        UserDTO dto = new UserDTO();
+        BeanUtils.copyProperties(user, dto);
+        return dto;
     }
 
     public String getUsername() {
