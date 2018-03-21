@@ -1,6 +1,6 @@
 package org.hyl.commons.errors;
 
-import org.hyl.commons.enums.Result;
+import org.hyl.commons.result.enums.Result;
 
 public class InternalServerErrorException extends RuntimeException {
 

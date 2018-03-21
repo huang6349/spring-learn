@@ -1,7 +1,8 @@
 package org.hyl.commons.utils;
 
-import org.hyl.commons.domain.ResultEntity;
-import org.hyl.commons.enums.Result;
+import org.hyl.commons.result.ResultUtil;
+import org.hyl.commons.result.domain.ResultEntity;
+import org.hyl.commons.result.enums.Result;
 import org.junit.Before;
 import org.junit.Test;
 

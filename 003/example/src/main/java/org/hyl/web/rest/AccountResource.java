@@ -1,11 +1,10 @@
 package org.hyl.web.rest;
 
-import org.hyl.commons.domain.ResultEntity;
+import org.hyl.commons.result.domain.ResultEntity;
 import org.hyl.commons.errors.InternalServerErrorException;
-import org.hyl.commons.utils.ResultUtil;
+import org.hyl.commons.result.ResultUtil;
 import org.hyl.service.PermissionsService;
 import org.hyl.service.UserService;
-import org.hyl.service.dto.UserDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

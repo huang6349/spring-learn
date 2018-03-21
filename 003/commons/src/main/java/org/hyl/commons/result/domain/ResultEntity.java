@@ -1,4 +1,4 @@
-package org.hyl.commons.domain;
+package org.hyl.commons.result.domain;
 
 import java.io.Serializable;
 

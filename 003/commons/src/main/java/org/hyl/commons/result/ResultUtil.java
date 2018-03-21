@@ -1,8 +1,8 @@
-package org.hyl.commons.utils;
+package org.hyl.commons.result;
 
-import org.hyl.commons.domain.ResultEntity;
-import org.hyl.commons.enums.Result;
-import org.hyl.commons.service.dto.ResultDTO;
+import org.hyl.commons.result.domain.ResultEntity;
+import org.hyl.commons.result.enums.Result;
+import org.hyl.commons.result.service.dto.ResultDTO;
 
 public final class ResultUtil {
 

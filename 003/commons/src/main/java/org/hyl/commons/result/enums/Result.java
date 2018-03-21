@@ -1,4 +1,4 @@
-package org.hyl.commons.enums;
+package org.hyl.commons.result.enums;
 
 import org.apache.commons.lang3.StringUtils;
 

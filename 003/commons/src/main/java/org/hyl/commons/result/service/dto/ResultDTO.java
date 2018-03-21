@@ -1,6 +1,6 @@
-package org.hyl.commons.service.dto;
+package org.hyl.commons.result.service.dto;
 
-import org.hyl.commons.enums.Result;
+import org.hyl.commons.result.enums.Result;
 
 public class ResultDTO {
 

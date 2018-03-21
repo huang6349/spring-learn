@@ -1,9 +1,8 @@
 package org.hyl.errors;
 
-import org.hyl.commons.domain.ResultEntity;
-import org.hyl.commons.errors.DataAlreadyIDException;
+import org.hyl.commons.result.domain.ResultEntity;
 import org.hyl.commons.errors.InternalServerErrorException;
-import org.hyl.commons.utils.ResultUtil;
+import org.hyl.commons.result.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
