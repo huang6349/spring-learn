@@ -1,7 +1,7 @@
 package org.hyl.web.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.hyl.commons.utils.LevelUtil;
+import org.hyl.utils.LevelUtil;
 import org.hyl.domain.Dict;
 import org.hyl.repository.DictRepository;
 import org.hyl.service.dto.DictDTO;

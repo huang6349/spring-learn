@@ -1,4 +1,4 @@
-package org.hyl.commons.utils;
+package org.hyl.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
