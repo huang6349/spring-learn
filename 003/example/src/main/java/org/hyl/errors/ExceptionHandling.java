@@ -5,9 +5,11 @@ import org.hyl.commons.errors.InternalServerErrorException;
 import org.hyl.commons.result.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,16 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 @ControllerAdvice
 public class ExceptionHandling {
 
-    private final Logger logger = LoggerFactory.getLogger(ExceptionHandling.class);
-
-    @ExceptionHandler(value = Exception.class)
+    @ExceptionHandler(value = InternalServerErrorException.class)
     @ResponseBody
-    public ResultEntity error(HttpServletRequest request, HttpServletResponse response, Exception e) {
-        logger.error("[{}]发生错误：{}", request.getRequestURI(), e.getMessage());
-        if (e instanceof InternalServerErrorException) {
-            InternalServerErrorException ex = (InternalServerErrorException) e;
-            return ResultUtil.error(ex.getType(), ex.getClass().getSimpleName(), ex.getState(), e.getMessage(), ex.getData(), ex.getParams());
-        }
-        return ResultUtil.error(e.getMessage());
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResultEntity handleInternalServerErrorException(InternalServerErrorException e) {
+        return ResultUtil.error(e.getType(), e.getClass().getName(), e.getState(), e.getMessage(), e.getData(), e.getParams());
     }
 }

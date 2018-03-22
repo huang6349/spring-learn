@@ -1,19 +1,18 @@
 package org.hyl.service.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hyl.base.service.dto.IdDTO;
 import org.hyl.domain.Dict;
 import org.springframework.beans.BeanUtils;
-
-import javax.validation.constraints.NotNull;
 
 public class DictDTO extends IdDTO {
 
     private Long pid = 0L;
 
-    @NotNull(message = "字典标识不能为空")
+    @NotBlank(message = "字典标识不能为空")
     private String ident;
 
-    @NotNull(message = "字典数据不能为空")
+    @NotBlank(message = "字典数据不能为空")
     private String data;
 
     private String code;

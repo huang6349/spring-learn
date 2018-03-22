@@ -1,14 +1,13 @@
 package org.hyl.service.dto;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hyl.base.service.dto.IdDTO;
-
-import javax.validation.constraints.NotNull;
 
 public class PermissionsDTO extends IdDTO {
 
     private Long pid = 0L;
 
-    @NotNull(message = "权限名称不能为空")
+    @NotBlank(message = "权限名称不能为空")
     private String name;
 
     public Long getPid() {
