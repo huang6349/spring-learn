@@ -38,7 +38,7 @@ public class DictResource {
 
     @PostMapping("/admin/dict")
     @Secured("ADMIN")
-    public ResultEntity create(@Valid @RequestBody DictDTO dto) {
+    public ResultEntity create(@Valid DictDTO dto) {
         logger.debug("新增数据字典：{}", dto);
         if (dto.getId() != null) {
             throw new DataAlreadyIDException();

@@ -4,7 +4,9 @@ import org.hyl.commons.result.enums.Result;
 
 public class DataAlreadyExistException extends InternalServerErrorException {
 
-    public static final Integer STATE = 10001;
+    private static final long serialVersionUID = 1071092072613795702L;
+
+    private static final Integer STATE = 10001;
 
     public DataAlreadyExistException(String message) {
         super(message, Result.Type.POST, STATE);

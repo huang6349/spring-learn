@@ -4,7 +4,9 @@ import org.hyl.commons.result.enums.Result;
 
 public class DataAlreadyIDException extends InternalServerErrorException {
 
-    public static final Integer STATE = 10000;
+    private static final long serialVersionUID = 193543111713015568L;
+
+    private static final Integer STATE = 10000;
 
     public DataAlreadyIDException() {
         super("新增数据不能存在ID", Result.Type.POST, STATE);

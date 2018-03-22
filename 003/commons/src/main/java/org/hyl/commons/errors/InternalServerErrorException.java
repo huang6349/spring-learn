@@ -8,7 +8,7 @@ public class InternalServerErrorException extends RuntimeException {
 
     private Result.Type type = Result.Type.DEFAULT;
 
-    private Integer state;
+    private Integer state = 500;
 
     private Object params;
 
