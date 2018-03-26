@@ -1,8 +1,8 @@
 package org.hyl.web.rest;
 
-import org.hyl.commons.result.domain.ResultEntity;
 import org.hyl.commons.errors.InternalServerErrorException;
 import org.hyl.commons.result.ResultUtil;
+import org.hyl.commons.result.domain.Message;
 import org.hyl.service.PermissionsService;
 import org.hyl.service.UserService;
 import org.slf4j.Logger;
@@ -29,14 +29,14 @@ public class AccountResource {
     }
 
     @GetMapping("/account")
-    public ResultEntity getAccount() {
+    public Message getAccount() {
         return userService.getUserWithAuthorities()
                 .map(ResultUtil::success)
                 .orElseThrow(() -> new InternalServerErrorException("获取当前用户信息失败，请稍后再试", 404));
     }
 
     @GetMapping("/authorities")
-    public ResultEntity getAuthorities() {
+    public Message getAuthorities() {
         return permissionsService.getUserPermissions()
                 .map(ResultUtil::success)
                 .orElseThrow(() -> new InternalServerErrorException("获取当前用户权限失败，请稍后再试", 404));

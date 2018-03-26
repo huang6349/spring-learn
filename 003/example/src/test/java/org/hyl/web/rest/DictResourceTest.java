@@ -1,10 +1,10 @@
 package org.hyl.web.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.hyl.base.level.LevelUtil;
 import org.hyl.domain.Dict;
 import org.hyl.repository.DictRepository;
 import org.hyl.service.dto.DictDTO;
-import org.hyl.utils.LevelUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -86,7 +86,7 @@ public class DictResourceTest {
         dict.setId(1L);
         int size = dictRepository.findAll().size();
         RequestBuilder builder = MockMvcRequestBuilders.post(url).contentType(MediaType.APPLICATION_JSON_UTF8).content(objectMapper.writeValueAsString(dict));
-        mockMvc.perform(builder).andExpect(status().isOk());
+        mockMvc.perform(builder).andExpect(status().isBadRequest());
         List<Dict> dicts = dictRepository.findAll();
         assertThat(dicts).hasSize(size);
     }
@@ -102,7 +102,7 @@ public class DictResourceTest {
         dictRepository.saveAndFlush(dict);
         int size = dictRepository.findAll().size();
         RequestBuilder builder = MockMvcRequestBuilders.post(url).contentType(MediaType.APPLICATION_JSON_UTF8).content(objectMapper.writeValueAsString(dto));
-        mockMvc.perform(builder).andExpect(status().isOk());
+        mockMvc.perform(builder).andExpect(status().isBadRequest());
         List<Dict> dicts = dictRepository.findAll();
         assertThat(dicts).hasSize(size);
     }

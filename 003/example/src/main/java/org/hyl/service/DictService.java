@@ -1,10 +1,10 @@
 package org.hyl.service;
 
+import org.hyl.base.level.LevelUtil;
 import org.hyl.commons.errors.DataAlreadyExistException;
 import org.hyl.domain.Dict;
 import org.hyl.repository.DictRepository;
 import org.hyl.service.dto.DictDTO;
-import org.hyl.utils.LevelUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

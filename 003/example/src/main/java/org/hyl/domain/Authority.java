@@ -1,6 +1,6 @@
 package org.hyl.domain;
 
-import org.hyl.base.domain.AbstractAuditingEntity;
+import org.hyl.base.auditing.domain.AbstractAuditingEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

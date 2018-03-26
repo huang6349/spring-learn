@@ -1,7 +1,7 @@
 package org.hyl.service.dto;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hyl.base.service.dto.IdDTO;
+import org.hyl.base.auditing.service.dto.IdDTO;
 
 public class PermissionsDTO extends IdDTO {
 

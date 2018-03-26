@@ -3,7 +3,8 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-jdbc'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'com.h2database:h2'
-    compile project(':commons')
     compile project(':security')
+    compile files('../lib/huangyl-commons-1.0.0-SNAPSHOT.jar')
+    compile files('../lib/huangyl-base-1.0.0-SNAPSHOT.jar')
     testCompile 'org.springframework.security:spring-security-test'
 }

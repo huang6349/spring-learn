@@ -1,8 +1,5 @@
 package org.hyl.service;
 
-import org.hyl.domain.MyUser;
-import org.hyl.domain.Permissions;
-import org.hyl.repository.PermissionsRepository;
 import org.hyl.repository.UserRepository;
 import org.hyl.security.SecurityUtils;
 import org.hyl.service.dto.UserDTO;
@@ -12,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

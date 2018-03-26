@@ -1,11 +1,11 @@
 package org.hyl.service;
 
-import org.hyl.utils.impl.LevelUtilImpl;
+import org.hyl.base.level.LevelUtil;
+import org.hyl.base.level.impl.DefaultLevelUtil;
 import org.hyl.repository.PermissionsRepository;
 import org.hyl.repository.UserRepository;
 import org.hyl.security.SecurityUtils;
 import org.hyl.service.dto.PermissionsLevelDTO;
-import org.hyl.utils.LevelUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class PermissionsService {
 
     private final Logger logger = LoggerFactory.getLogger(PermissionsService.class);
 
-    private LevelUtil<PermissionsLevelDTO> levelService = new LevelUtilImpl<>();
+    private LevelUtil<PermissionsLevelDTO> levelUtil = new DefaultLevelUtil<>();
 
     private final UserRepository userRepository;
 
@@ -38,7 +38,7 @@ public class PermissionsService {
     public Optional<List<PermissionsLevelDTO>> getUserPermissions() {
         return SecurityUtils.getCurrentUserUsername()
                 .flatMap(userRepository::findOneWithAuthoritiesByUsername)
-                .map(user -> levelService.listToTree(permissionsRepository.findByAuthoritiesIn(user.getAuthorities())
+                .map(user -> levelUtil.listToTree(permissionsRepository.findByAuthoritiesIn(user.getAuthorities())
                         .stream()
                         .distinct()
                         .map(PermissionsLevelDTO::adapt)

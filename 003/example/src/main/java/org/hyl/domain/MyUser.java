@@ -2,7 +2,7 @@ package org.hyl.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.BatchSize;
-import org.hyl.base.domain.AbstractIdAuditingEntity;
+import org.hyl.base.auditing.domain.AbstractIdAuditingEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
